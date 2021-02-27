@@ -50,6 +50,14 @@ class UserViewSet(viewsets.ViewSet):
                 return HttpResponse('borrower created')
 
         return JsonResponse(serializer_class.errors, status=400)
+    
+    def get(self, request, id=None):
+        # print(id)
+        # print(User.objects.all())
+        # for user in User.objects.all():
+        #     print(user)
+        print(User.objects.get(username=str(id)))
+        return HttpResponse('Got users ' + str(id))
 
 class BorrowerViewSet(viewsets.ViewSet):
 
